@@ -1,0 +1,992 @@
+[
+  {
+    "title": "24",
+    "poster": "img/series/24.jpg",
+    "city": "Los Angeles",
+    "country": "USA",
+    "coordinates": [
+      34.0522,
+      -118.2437
+    ]
+  },
+  {
+    "title": "Arrow",
+    "poster": "img/series/arrow.jpg",
+    "city": "Vancouver",
+    "country": "Canada",
+    "coordinates": [
+      49.2827,
+      -123.1207
+    ]
+  },
+  {
+    "title": "Battlestar Galactica",
+    "poster": "img/series/battlestar-galactica.jpg",
+    "city": "Vancouver",
+    "country": "Canada",
+    "coordinates": [
+      49.2827,
+      -123.1207
+    ]
+  },
+  {
+    "title": "Behzat Ç.",
+    "poster": "img/series/behzat-c.jpg",
+    "city": "Ankara",
+    "country": "Turkey",
+    "coordinates": [
+      39.9334,
+      32.8597
+    ]
+  },
+  {
+    "title": "Better Call Saul",
+    "poster": "img/series/better-call-saul.jpg",
+    "city": "Albuquerque",
+    "country": "USA",
+    "coordinates": [
+      35.0844,
+      -106.6504
+    ]
+  },
+  {
+    "title": "Billions",
+    "poster": "img/series/billions.jpg",
+    "city": "New York",
+    "country": "USA",
+    "coordinates": [
+      40.7128,
+      -74.006
+    ]
+  },
+  {
+    "title": "Black Mirror",
+    "poster": "img/series/black-mirror.jpg",
+    "city": "London",
+    "country": "UK",
+    "coordinates": [
+      51.5074,
+      -0.1278
+    ]
+  },
+  {
+    "title": "Black Sails",
+    "poster": "img/series/black-sails.jpg",
+    "city": "Cape Town",
+    "country": "South Africa",
+    "coordinates": [
+      -33.9249,
+      18.4241
+    ]
+  },
+  {
+    "title": "Bodrum Masalı",
+    "poster": "img/series/bodrum-masali.jpg",
+    "city": "Muğla",
+    "country": "Turkey",
+    "coordinates": [
+      37.2153,
+      28.3636
+    ]
+  },
+  {
+    "title": "Breaking Bad",
+    "poster": "img/series/breaking-bad.jpg",
+    "city": "Albuquerque",
+    "country": "USA",
+    "coordinates": [
+      35.0844,
+      -106.6504
+    ]
+  },
+  {
+    "title": "Brooklyn Nine-Nine",
+    "poster": "img/series/brooklyn-nine-nine.jpg",
+    "city": "Los Angeles",
+    "country": "USA",
+    "coordinates": [
+      34.0522,
+      -118.2437
+    ]
+  },
+  {
+    "title": "Chernobyl",
+    "poster": "img/series/chernobyl.jpg",
+    "city": "Vilnius",
+    "country": "Lithuania",
+    "coordinates": [
+      54.6872,
+      25.2797
+    ]
+  },
+  {
+    "title": "Dark",
+    "poster": "img/series/dark.jpg",
+    "city": "Berlin",
+    "country": "Germany",
+    "coordinates": [
+      52.52,
+      13.405
+    ]
+  },
+  {
+    "title": "Dexter",
+    "poster": "img/series/dexter.jpg",
+    "city": "Miami",
+    "country": "USA",
+    "coordinates": [
+      25.7617,
+      -80.1918
+    ]
+  },
+  {
+    "title": "Doctor Who",
+    "poster": "img/series/doctor-who.jpg",
+    "city": "Cardiff",
+    "country": "UK",
+    "coordinates": [
+      51.4816,
+      -3.1791
+    ]
+  },
+  {
+    "title": "Downton Abbey",
+    "poster": "img/series/downton-abbey.jpg",
+    "city": "London",
+    "country": "UK",
+    "coordinates": [
+      51.5074,
+      -0.1278
+    ]
+  },
+  {
+    "title": "Entourage",
+    "poster": "img/series/entourage.jpg",
+    "city": "Los Angeles",
+    "country": "USA",
+    "coordinates": [
+      34.0522,
+      -118.2437
+    ]
+  },
+  {
+    "title": "Fargo",
+    "poster": "img/series/fargo.jpg",
+    "city": "Calgary",
+    "country": "Canada",
+    "coordinates": [
+      51.0447,
+      -114.0719
+    ]
+  },
+  {
+    "title": "Friends",
+    "poster": "img/series/friends.jpg",
+    "city": "Los Angeles",
+    "country": "USA",
+    "coordinates": [
+      34.0522,
+      -118.2437
+    ]
+  },
+  {
+    "title": "Fringe",
+    "poster": "img/series/fringe.jpg",
+    "city": "Vancouver",
+    "country": "Canada",
+    "coordinates": [
+      49.2827,
+      -123.1207
+    ]
+  },
+  {
+    "title": "Game of Thrones",
+    "poster": "img/series/game-of-thrones.jpg",
+    "city": "Belfast",
+    "country": "UK",
+    "coordinates": [
+      54.5973,
+      -5.9301
+    ]
+  },
+  {
+    "title": "Gossip Girl",
+    "poster": "img/series/gossip-girl.jpg",
+    "city": "New York",
+    "country": "USA",
+    "coordinates": [
+      40.7128,
+      -74.006
+    ]
+  },
+  {
+    "title": "Gotham",
+    "poster": "img/series/gotham.jpg",
+    "city": "New York",
+    "country": "USA",
+    "coordinates": [
+      40.7128,
+      -74.006
+    ]
+  },
+  {
+    "title": "Hannibal",
+    "poster": "img/series/hannibal.jpg",
+    "city": "Toronto",
+    "country": "Canada",
+    "coordinates": [
+      43.6532,
+      -79.3832
+    ]
+  },
+  {
+    "title": "Hawaii Five-0",
+    "poster": "img/series/hawaii-five-0.jpg",
+    "city": "Honolulu",
+    "country": "USA",
+    "coordinates": [
+      21.3069,
+      -157.8583
+    ]
+  },
+  {
+    "title": "Homeland",
+    "poster": "img/series/homeland.jpg",
+    "city": "Charlotte",
+    "country": "USA",
+    "coordinates": [
+      35.2271,
+      -80.8431
+    ]
+  },
+  {
+    "title": "House",
+    "poster": "img/series/house.jpg",
+    "city": "Los Angeles",
+    "country": "USA",
+    "coordinates": [
+      34.0522,
+      -118.2437
+    ]
+  },
+  {
+    "title": "House of Cards",
+    "poster": "img/series/house-of-cards.jpg",
+    "city": "Baltimore",
+    "country": "USA",
+    "coordinates": [
+      39.2904,
+      -76.6122
+    ]
+  },
+  {
+    "title": "How I Met Your Mother",
+    "poster": "img/series/how-i-met-your-mother.jpg",
+    "city": "Los Angeles",
+    "country": "USA",
+    "coordinates": [
+      34.0522,
+      -118.2437
+    ]
+  },
+  {
+    "title": "Kavak Yelleri",
+    "poster": "img/series/kavak-yelleri.jpg",
+    "city": "İzmir",
+    "country": "Turkey",
+    "coordinates": [
+      38.4237,
+      27.1428
+    ]
+  },
+  {
+    "title": "Lost",
+    "poster": "img/series/lost.jpg",
+    "city": "Honolulu",
+    "country": "USA",
+    "coordinates": [
+      21.3069,
+      -157.8583
+    ]
+  },
+  {
+    "title": "Lucifer",
+    "poster": "img/series/lucifer.jpg",
+    "city": "Vancouver",
+    "country": "Canada",
+    "coordinates": [
+      49.2827,
+      -123.1207
+    ]
+  },
+  {
+    "title": "Medcezir",
+    "poster": "img/series/medcezir.jpg",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "coordinates": [
+      41.0082,
+      28.9784
+    ]
+  },
+  {
+    "title": "Modern Family",
+    "poster": "img/series/modern-family.jpg",
+    "city": "Los Angeles",
+    "country": "USA",
+    "coordinates": [
+      34.0522,
+      -118.2437
+    ]
+  },
+  {
+    "title": "Mr. Robot",
+    "poster": "img/series/mr-robot.jpg",
+    "city": "New York",
+    "country": "USA",
+    "coordinates": [
+      40.7128,
+      -74.006
+    ]
+  },
+  {
+    "title": "Narcos",
+    "poster": "img/series/narcos.jpg",
+    "city": "Bogotá",
+    "country": "Colombia",
+    "coordinates": [
+      4.711,
+      -74.0721
+    ]
+  },
+  {
+    "title": "Once Upon a Time",
+    "poster": "img/series/once-upon-a-time.jpg",
+    "city": "Vancouver",
+    "country": "Canada",
+    "coordinates": [
+      49.2827,
+      -123.1207
+    ]
+  },
+  {
+    "title": "Orphan Black",
+    "poster": "img/series/orphan-black.jpg",
+    "city": "Toronto",
+    "country": "Canada",
+    "coordinates": [
+      43.6532,
+      -79.3832
+    ]
+  },
+  {
+    "title": "Oz",
+    "poster": "img/series/oz.jpg",
+    "city": "New York",
+    "country": "USA",
+    "coordinates": [
+      40.7128,
+      -74.006
+    ]
+  },
+  {
+    "title": "Ozark",
+    "poster": "img/series/ozark.jpg",
+    "city": "Atlanta",
+    "country": "USA",
+    "coordinates": [
+      33.749,
+      -84.388
+    ]
+  },
+  {
+    "title": "Parks and Recreation",
+    "poster": "img/series/parks-and-recreation.jpg",
+    "city": "Los Angeles",
+    "country": "USA",
+    "coordinates": [
+      34.0522,
+      -118.2437
+    ]
+  },
+  {
+    "title": "Peaky Blinders",
+    "poster": "img/series/peaky-blinders.jpg",
+    "city": "Birmingham",
+    "country": "UK",
+    "coordinates": [
+      52.4862,
+      -1.8904
+    ]
+  },
+  {
+    "title": "Power",
+    "poster": "img/series/power.jpg",
+    "city": "New York",
+    "country": "USA",
+    "coordinates": [
+      40.7128,
+      -74.006
+    ]
+  },
+  {
+    "title": "Prison Break",
+    "poster": "img/series/prison-break.jpg",
+    "city": "Dallas",
+    "country": "USA",
+    "coordinates": [
+      32.7767,
+      -96.797
+    ]
+  },
+  {
+    "title": "Psych",
+    "poster": "img/series/psych.jpg",
+    "city": "Vancouver",
+    "country": "Canada",
+    "coordinates": [
+      49.2827,
+      -123.1207
+    ]
+  },
+  {
+    "title": "Riverdale",
+    "poster": "img/series/riverdale.jpg",
+    "city": "Vancouver",
+    "country": "Canada",
+    "coordinates": [
+      49.2827,
+      -123.1207
+    ]
+  },
+  {
+    "title": "Sense8",
+    "poster": "img/series/sense8.jpg",
+    "city": "San Francisco",
+    "country": "USA",
+    "coordinates": [
+      37.7749,
+      -122.4194
+    ]
+  },
+  {
+    "title": "Sex and the City",
+    "poster": "img/series/sex-and-the-city.jpg",
+    "city": "New York",
+    "country": "USA",
+    "coordinates": [
+      40.7128,
+      -74.006
+    ]
+  },
+  {
+    "title": "Sherlock",
+    "poster": "img/series/sherlock.jpg",
+    "city": "London",
+    "country": "UK",
+    "coordinates": [
+      51.5074,
+      -0.1278
+    ]
+  },
+  {
+    "title": "Skins",
+    "poster": "img/series/skins.jpg",
+    "city": "Bristol",
+    "country": "UK",
+    "coordinates": [
+      51.4545,
+      -2.5879
+    ]
+  },
+  {
+    "title": "Smallville",
+    "poster": "img/series/smallville.jpg",
+    "city": "Vancouver",
+    "country": "Canada",
+    "coordinates": [
+      49.2827,
+      -123.1207
+    ]
+  },
+  {
+    "title": "Snowpiercer",
+    "poster": "img/series/snowpiercer.jpg",
+    "city": "Vancouver",
+    "country": "Canada",
+    "coordinates": [
+      49.2827,
+      -123.1207
+    ]
+  },
+  {
+    "title": "Spartacus",
+    "poster": "img/series/spartacus.jpg",
+    "city": "Auckland",
+    "country": "New Zealand",
+    "coordinates": [
+      -36.8485,
+      174.7633
+    ]
+  },
+  {
+    "title": "Stargate Atlantis",
+    "poster": "img/series/stargate-atlantis.jpg",
+    "city": "Vancouver",
+    "country": "Canada",
+    "coordinates": [
+      49.2827,
+      -123.1207
+    ]
+  },
+  {
+    "title": "Stargate SG-1",
+    "poster": "img/series/stargate-sg-1.jpg",
+    "city": "Vancouver",
+    "country": "Canada",
+    "coordinates": [
+      49.2827,
+      -123.1207
+    ]
+  },
+  {
+    "title": "Stranger Things",
+    "poster": "img/series/stranger-things.jpg",
+    "city": "Atlanta",
+    "country": "USA",
+    "coordinates": [
+      33.749,
+      -84.388
+    ]
+  },
+  {
+    "title": "Succession",
+    "poster": "img/series/succession.jpg",
+    "city": "New York",
+    "country": "USA",
+    "coordinates": [
+      40.7128,
+      -74.006
+    ]
+  },
+  {
+    "title": "Suits",
+    "poster": "img/series/suits.jpg",
+    "city": "Toronto",
+    "country": "Canada",
+    "coordinates": [
+      43.6532,
+      -79.3832
+    ]
+  },
+  {
+    "title": "Supernatural",
+    "poster": "img/series/supernatural.jpg",
+    "city": "Vancouver",
+    "country": "Canada",
+    "coordinates": [
+      49.2827,
+      -123.1207
+    ]
+  },
+  {
+    "title": "The 100",
+    "poster": "img/series/the-100.jpg",
+    "city": "Vancouver",
+    "country": "Canada",
+    "coordinates": [
+      49.2827,
+      -123.1207
+    ]
+  },
+  {
+    "title": "The Big Bang Theory",
+    "poster": "img/series/the-big-bang-theory.jpg",
+    "city": "Los Angeles",
+    "country": "USA",
+    "coordinates": [
+      34.0522,
+      -118.2437
+    ]
+  },
+  {
+    "title": "The Boys",
+    "poster": "img/series/the-boys.jpg",
+    "city": "Toronto",
+    "country": "Canada",
+    "coordinates": [
+      43.6532,
+      -79.3832
+    ]
+  },
+  {
+    "title": "The Crown",
+    "poster": "img/series/the-crown.jpg",
+    "city": "London",
+    "country": "UK",
+    "coordinates": [
+      51.5074,
+      -0.1278
+    ]
+  },
+  {
+    "title": "The Expanse",
+    "poster": "img/series/the-expanse.jpg",
+    "city": "Toronto",
+    "country": "Canada",
+    "coordinates": [
+      43.6532,
+      -79.3832
+    ]
+  },
+  {
+    "title": "The Flash",
+    "poster": "img/series/the-flash.jpg",
+    "city": "Vancouver",
+    "country": "Canada",
+    "coordinates": [
+      49.2827,
+      -123.1207
+    ]
+  },
+  {
+    "title": "The Good Doctor",
+    "poster": "img/series/the-good-doctor.jpg",
+    "city": "Vancouver",
+    "country": "Canada",
+    "coordinates": [
+      49.2827,
+      -123.1207
+    ]
+  },
+  {
+    "title": "The Good Place",
+    "poster": "img/series/the-good-place.jpg",
+    "city": "Los Angeles",
+    "country": "USA",
+    "coordinates": [
+      34.0522,
+      -118.2437
+    ]
+  },
+  {
+    "title": "The IT Crowd",
+    "poster": "img/series/the-it-crowd.jpg",
+    "city": "London",
+    "country": "UK",
+    "coordinates": [
+      51.5074,
+      -0.1278
+    ]
+  },
+  {
+    "title": "The Last of Us",
+    "poster": "img/series/the-last-of-us.jpg",
+    "city": "Calgary",
+    "country": "Canada",
+    "coordinates": [
+      51.0447,
+      -114.0719
+    ]
+  },
+  {
+    "title": "The Mandalorian",
+    "poster": "img/series/the-mandalorian.jpg",
+    "city": "Los Angeles",
+    "country": "USA",
+    "coordinates": [
+      34.0522,
+      -118.2437
+    ]
+  },
+  {
+    "title": "The Night Manager",
+    "poster": "img/series/the-night-manager.jpg",
+    "city": "Marrakesh",
+    "country": "Morocco",
+    "coordinates": [
+      31.6295,
+      -7.9811
+    ]
+  },
+  {
+    "title": "Uzak Şehir",
+    "poster": "img/series/uzak-sehir.jpg",
+    "city": "Mardin",
+    "country": "Turkey",
+    "coordinates": [
+      37.3129,
+      40.7336
+    ]
+  },
+  {
+    "title": "Vikings",
+    "poster": "img/series/vikings.jpg",
+    "city": "Dublin",
+    "country": "Ireland",
+    "coordinates": [
+      53.3498,
+      -6.2603
+    ]
+  },
+  {
+    "title": "Westworld",
+    "poster": "img/series/westworld.jpg",
+    "city": "Los Angeles",
+    "country": "USA",
+    "coordinates": [
+      34.0522,
+      -118.2437
+    ]
+  },
+  {
+    "title": "White Collar",
+    "poster": "img/series/white-collar.jpg",
+    "city": "New York",
+    "country": "USA",
+    "coordinates": [
+      40.7128,
+      -74.006
+    ]
+  },
+  {
+    "title": "Yaprak Dökümü",
+    "poster": "img/series/yaprak-dokumu.jpg",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "coordinates": [
+      41.0082,
+      28.9784
+    ]
+  },
+  {
+    "title": "The Witcher",
+    "poster": "img/series/the-witcher.jpg",
+    "city": "Budapest",
+    "country": "Hungary",
+    "coordinates": [
+      47.4979,
+      19.0402
+    ]
+  },
+  {
+    "title": "Elite",
+    "poster": "img/series/elite.jpg",
+    "city": "Madrid",
+    "country": "Spain",
+    "coordinates": [
+      40.4168,
+      -3.7038
+    ]
+  },
+  {
+    "title": "Bodyguard",
+    "poster": "img/series/bodyguard.jpg",
+    "city": "London",
+    "country": "UK",
+    "coordinates": [
+      51.5074,
+      -0.1278
+    ]
+  },
+  {
+    "title": "The Office (US)",
+    "poster": "img/series/the-office-us.jpg",
+    "city": "Scranton",
+    "country": "USA",
+    "coordinates": [
+      41.4089,
+      -75.6624
+    ]
+  },
+  {
+    "title": "The Wire",
+    "poster": "img/series/the-wire.jpg",
+    "city": "Baltimore",
+    "country": "USA",
+    "coordinates": [
+      39.2904,
+      -76.6122
+    ]
+  },
+  {
+    "title": "Mindhunter",
+    "poster": "img/series/mindhunter.jpg",
+    "city": "Pittsburgh",
+    "country": "USA",
+    "coordinates": [
+      40.4406,
+      -79.9959
+    ]
+  },
+  {
+    "title": "Sherlock Holmes (1984)",
+    "poster": "img/series/sherlock-holmes-1984.jpg",
+    "city": "London",
+    "country": "UK",
+    "coordinates": [
+      51.5074,
+      -0.1278
+    ]
+  },
+  {
+    "title": "Top Boy",
+    "poster": "img/series/top-boy.jpg",
+    "city": "London",
+    "country": "UK",
+    "coordinates": [
+      51.5074,
+      -0.1278
+    ]
+  },
+  {
+    "title": "Broadchurch",
+    "poster": "img/series/broadchurch.jpg",
+    "city": "Dorset",
+    "country": "UK",
+    "coordinates": [
+      50.748,
+      -2.3445
+    ]
+  },
+  {
+    "title": "The Bridge (Bron/Broen)",
+    "poster": "img/series/the-bridge-bronbroen.jpg",
+    "city": "Copenhagen",
+    "country": "Denmark",
+    "coordinates": [
+      55.6761,
+      12.5683
+    ]
+  },
+  {
+    "title": "The Rain",
+    "poster": "img/series/the-rain.jpg",
+    "city": "Copenhagen",
+    "country": "Denmark",
+    "coordinates": [
+      55.6761,
+      12.5683
+    ]
+  },
+  {
+    "title": "Borgen",
+    "poster": "img/series/borgen.jpg",
+    "city": "Copenhagen",
+    "country": "Denmark",
+    "coordinates": [
+      55.6761,
+      12.5683
+    ]
+  },
+  {
+    "title": "Skam",
+    "poster": "img/series/skam.jpg",
+    "city": "Oslo",
+    "country": "Norway",
+    "coordinates": [
+      59.9139,
+      10.7522
+    ]
+  },
+  {
+    "title": "Rita",
+    "poster": "img/series/rita.jpg",
+    "city": "Copenhagen",
+    "country": "Denmark",
+    "coordinates": [
+      55.6761,
+      12.5683
+    ]
+  },
+  {
+    "title": "Fauda",
+    "poster": "img/series/fauda.jpg",
+    "city": "Tel Aviv",
+    "country": "Israel",
+    "coordinates": [
+      32.0853,
+      34.7818
+    ]
+  },
+  {
+    "title": "Tehran",
+    "poster": "img/series/tehran.jpg",
+    "city": "Athens",
+    "country": "Greece",
+    "coordinates": [
+      37.9838,
+      23.7275
+    ]
+  },
+  {
+    "title": "Lupin",
+    "poster": "img/series/lupin.jpg",
+    "city": "Paris",
+    "country": "France",
+    "coordinates": [
+      48.8566,
+      2.3522
+    ]
+  },
+  {
+    "title": "Call My Agent!",
+    "poster": "img/series/call-my-agent.jpg",
+    "city": "Paris",
+    "country": "France",
+    "coordinates": [
+      48.8566,
+      2.3522
+    ]
+  },
+  {
+    "title": "Gomorrah",
+    "poster": "img/series/gomorrah.jpg",
+    "city": "Naples",
+    "country": "Italy",
+    "coordinates": [
+      40.8518,
+      14.2681
+    ]
+  },
+  {
+    "title": "Suburra",
+    "poster": "img/series/suburra.jpg",
+    "city": "Rome",
+    "country": "Italy",
+    "coordinates": [
+      41.9028,
+      12.4964
+    ]
+  },
+  {
+    "title": "Dark Matter",
+    "poster": "img/series/dark-matter.jpg",
+    "city": "Toronto",
+    "country": "Canada",
+    "coordinates": [
+      43.6532,
+      -79.3832
+    ]
+  },
+  {
+    "title": "The Terminal List",
+    "poster": "img/series/the-terminal-list.jpg",
+    "city": "Los Angeles",
+    "country": "USA",
+    "coordinates": [
+      34.0522,
+      -118.2437
+    ]
+  },
+  {
+    "title": "The Umbrella Academy",
+    "poster": "img/series/the-umbrella-academy.jpg",
+    "city": "Toronto",
+    "country": "Canada",
+    "coordinates": [
+      43.6532,
+      -79.3832
+    ]
+  }
+]
