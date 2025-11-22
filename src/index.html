@@ -24,7 +24,43 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <!-- TOP BAR -->
+  <!-- ===== INTRO OVERLAY (only before first game) ===== -->
+  <div id="intro-overlay" class="intro-overlay">
+    <div class="intro-content">
+      <div class="intro-logo-wrap">
+        <img src="img/logo.png" alt="Series City Hunt Logo" class="intro-logo" />
+      </div>
+      <h1 class="intro-title">Series City Hunt</h1>
+      <p class="intro-tagline">
+        Guess the filming city of popular TV series within 60 seconds and try to beat your best score!
+      </p>
+
+      <div class="intro-rules">
+        <h2>How to Play</h2>
+        <ul>
+          <li>You have <strong>60 seconds</strong> and <strong>5 hearts</strong>.</li>
+          <li>For each series, click on the map to place your city guess.</li>
+          <li>The closer you are, the more points you earn.</li>
+          <li><strong>"Far, but not too bad"</strong> and <strong>"Way too far"</strong> cost you a heart.</li>
+          <li>Try to achieve the highest <strong>Best Score</strong> before the time runs out.</li>
+        </ul>
+      </div>
+
+      <button id="btn-start-game" class="btn intro-start-btn">
+        Start Game
+      </button>
+    </div>
+  </div>
+
+  <!-- ===== LOADING OVERLAY ===== -->
+  <div id="loading-overlay" class="loading-overlay hidden">
+    <div class="loading-inner">
+      <div class="loading-spinner"></div>
+      <p>Loading map &amp; series...</p>
+    </div>
+  </div>
+
+  <!-- ===== TOP BAR ===== -->
   <header class="top-bar">
     <div class="top-bar-left">
       <img src="img/logo.png" alt="Series City Hunt" class="logo" />
@@ -33,7 +69,7 @@
 
     <div class="top-bar-center">
       <span id="question-indicator" class="pill">
-        QUESTION <span id="question-counter">1/10</span>
+        QUESTION <span id="question-counter">0/0</span>
       </span>
     </div>
 
@@ -44,10 +80,13 @@
       <div class="lives" id="lives">
         ❤ ❤ ❤ ❤ ❤
       </div>
+      <button id="mute-btn" class="icon-btn" title="Mute / Unmute">
+        🔊
+      </button>
     </div>
   </header>
 
-  <!-- MAIN LAYOUT -->
+  <!-- ===== MAIN LAYOUT ===== -->
   <main class="layout">
     <!-- LEFT: MAP AREA -->
     <section class="map-wrapper">
@@ -95,10 +134,10 @@
     </aside>
   </main>
 
-  <!-- BOTTOM: SERIES CARD -->
+  <!-- ===== BOTTOM: SERIES CARD ===== -->
   <section class="series-card">
     <div class="series-poster-wrapper">
-      <!-- Poster dosyaların: img/series/... -->
+      <!-- Poster files: img/series/... -->
       <img
         id="series-poster"
         src="img/series/how-i-met-your-mother.jpg"
@@ -119,6 +158,20 @@
       </div>
     </div>
   </section>
+
+  <!-- ===== GAME OVER MODAL ===== -->
+  <div id="gameOverModal" class="game-over-modal hidden">
+    <div class="game-over-content">
+      <h1>Game Over</h1>
+      <p id="gameOverMessage">Time is over!</p>
+      <p>Your score: <span id="gameOverScoreValue">0</span></p>
+      <p>Best score: <span id="gameOverBestScoreValue">0</span></p>
+      <button id="newGameBtn">New Game</button>
+    </div>
+  </div>
+
+  <!-- ===== BACKGROUND AUDIO ===== -->
+  <audio id="bg-audio" src="audio/bg-music.mp3" loop></audio>
 
   <!-- Leaflet JS -->
   <script

@@ -53,7 +53,7 @@ body {
 .top-bar-right {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
   font-weight: 600;
 }
 
@@ -65,6 +65,24 @@ body {
 .lives {
   font-size: 20px;
   color: #ff77c2;
+}
+
+.icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffe0f3;
+  transition: 0.2s;
+}
+
+.icon-btn:hover {
+  background: #ffc1e5;
 }
 
 /* LAYOUT ---------------------------------------------------------- */
@@ -227,4 +245,179 @@ body {
 
 .btn.ghost:hover {
   background: #ffe7f5;
+}
+
+/* GAME OVER MODAL ------------------------------------------------ */
+
+.game-over-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.game-over-modal.hidden {
+  display: none;
+}
+
+.game-over-content {
+  background: #ffe6f2;
+  padding: 32px 48px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.game-over-content h1 {
+  margin-bottom: 12px;
+  color: #ff4b9a;
+  font-size: 36px;
+}
+
+.game-over-content p {
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.game-over-content button {
+  margin-top: 16px;
+  padding: 10px 24px;
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  background: #ff4b9a;
+  color: #fff;
+}
+
+/* INTRO OVERLAY -------------------------------------------------- */
+
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #ff8acf33 0, transparent 55%), #050315;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 11000;
+  color: #fef3ff;
+}
+
+.intro-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease-out;
+}
+
+.intro-content {
+  max-width: 720px;
+  padding: 36px 40px 32px;
+  border-radius: 24px;
+  background: radial-gradient(circle at top, #ff8acf22 0, #0b071f 55%);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+  text-align: center;
+  border: 1px solid rgba(255, 138, 207, 0.5);
+}
+
+.intro-logo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.intro-logo {
+  width: 180px;
+  height: auto;
+  filter: drop-shadow(0 0 15px rgba(255, 138, 207, 0.8));
+}
+
+.intro-title {
+  font-size: 32px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  color: #ffb2e5;
+  text-shadow: 0 0 12px rgba(255, 138, 207, 0.9);
+}
+
+.intro-tagline {
+  font-size: 15px;
+  color: #f9e7ff;
+  margin-bottom: 18px;
+}
+
+.intro-rules {
+  text-align: left;
+  margin: 0 auto 20px;
+  max-width: 560px;
+}
+
+.intro-rules h2 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #ffe0f7;
+}
+
+.intro-rules ul {
+  list-style: disc;
+  margin-left: 18px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #e7d6ff;
+}
+
+.intro-start-btn {
+  background: linear-gradient(135deg, #ff77c2, #ffb4dd);
+  color: #2a042d;
+  padding: 12px 32px;
+  border-radius: 30px;
+  font-size: 16px;
+  box-shadow: 0 0 18px rgba(255, 138, 207, 0.9);
+}
+
+.intro-start-btn:hover {
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 0 24px rgba(255, 138, 207, 1);
+}
+
+/* LOADING OVERLAY ----------------------------------------------- */
+
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 0, 20, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10500;
+  color: #ffe6ff;
+}
+
+.loading-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease-out;
+}
+
+.loading-inner {
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #ff8acf;
+  margin: 0 auto 12px;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

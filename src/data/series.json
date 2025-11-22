@@ -41,7 +41,7 @@
   },
   {
     "title": "Better Call Saul",
-    "poster": "img/series/better-call-saul.jpg",
+    "poster": "img/series/better-cal-saul.jpg",
     "city": "Albuquerque",
     "country": "USA",
     "coordinates": [
@@ -101,7 +101,7 @@
   },
   {
     "title": "Brooklyn Nine-Nine",
-    "poster": "img/series/brooklyn-nine-nine.jpg",
+    "poster": "img/series/broklyn-nine-nine.jpg",
     "city": "Los Angeles",
     "country": "USA",
     "coordinates": [
@@ -241,7 +241,7 @@
   },
   {
     "title": "Hawaii Five-0",
-    "poster": "img/series/hawaii-five-0.jpg",
+    "poster": "img/series/hawaii-five-o.jpg",
     "city": "Honolulu",
     "country": "USA",
     "coordinates": [
@@ -541,7 +541,7 @@
   },
   {
     "title": "Stargate SG-1",
-    "poster": "img/series/stargate-sg-1.jpg",
+    "poster": "img/series/stargate-sg1.jpg",
     "city": "Vancouver",
     "country": "Canada",
     "coordinates": [
@@ -591,7 +591,7 @@
   },
   {
     "title": "The 100",
-    "poster": "img/series/the-100.jpg",
+    "poster": "img/series/the100.jpg",
     "city": "Vancouver",
     "country": "Canada",
     "coordinates": [
@@ -671,7 +671,7 @@
   },
   {
     "title": "The IT Crowd",
-    "poster": "img/series/the-it-crowd.jpg",
+    "poster": "img/series/the-ıt-crowd.jpg",
     "city": "London",
     "country": "UK",
     "coordinates": [
@@ -691,7 +691,7 @@
   },
   {
     "title": "The Mandalorian",
-    "poster": "img/series/the-mandalorian.jpg",
+    "poster": "img/series/the-madalorian.jpg",
     "city": "Los Angeles",
     "country": "USA",
     "coordinates": [
@@ -791,7 +791,7 @@
   },
   {
     "title": "The Office (US)",
-    "poster": "img/series/the-office-us.jpg",
+    "poster": "img/series/the-office.jpg",
     "city": "Scranton",
     "country": "USA",
     "coordinates": [
@@ -851,7 +851,7 @@
   },
   {
     "title": "The Bridge (Bron/Broen)",
-    "poster": "img/series/the-bridge-bronbroen.jpg",
+    "poster": "img/series/the-bridge.jpg",
     "city": "Copenhagen",
     "country": "Denmark",
     "coordinates": [
