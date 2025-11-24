@@ -14,7 +14,7 @@ let seriesData = [];
 let currentIndex = 0;
 
 let score = 0;
-// read best score from localStorage (or 0)
+// bestScore'u localStorage'dan oku (yoksa 0)
 let bestScore = Number(localStorage.getItem("bestScore")) || 0;
 
 let lives = 5;
@@ -24,20 +24,23 @@ let streakThreshold = 3;
 let questionsAnswered = 0;
 
 let gameOver = false;
+let hasGameStarted = false;
 
-// UI references
+// Game over modal referansları
 let gameOverModal;
 let gameOverMessageEl;
 let gameOverScoreValueEl;
 let gameOverBestScoreValueEl;
 let newGameBtn;
 
+// Loading overlay
 let loadingOverlay;
-let introOverlay;
-let startGameBtn;
 
+// Audio
 let bgAudio;
-let muteBtn;
+let sfxCorrect;
+let sfxWrong;
+let sfxClick;
 
 
 /* ============================================================
@@ -45,6 +48,9 @@ let muteBtn;
 ============================================================ */
 
 function initMap() {
+  // Aynı map'i ikinci kez kurmaya çalışma
+  if (map) return;
+
   map = L.map("map").setView([20, 0], 2);
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -70,6 +76,9 @@ function placeMarker(latlng) {
 ============================================================ */
 
 function startTimer() {
+  // Eski interval varsa temizle
+  if (timerInterval) clearInterval(timerInterval);
+
   timerInterval = setInterval(() => {
     if (gameOver) return;
 
@@ -84,7 +93,7 @@ function startTimer() {
 
 
 /* ============================================================
-   LOAD SERIES FROM JSON
+   JSON'DAN DİZİLERİ YÜKLE
 ============================================================ */
 
 async function loadSeries() {
@@ -101,7 +110,7 @@ async function loadSeries() {
 
     normalizePosters();
 
-    // shuffle so each game is different
+    // Dizileri karıştır
     seriesData.sort(() => Math.random() - 0.5);
 
     currentIndex = 0;
@@ -118,13 +127,13 @@ async function loadSeries() {
 
 
 /* ============================================================
-   POSTER PATH NORMALIZATION
+   POSTER PATH NORMALIZATION (güvenlik için)
 ============================================================ */
 
 function normalizePosters() {
   seriesData = seriesData.map((s) => {
     if (!s.poster) return s;
-    const fileName = s.poster.split("/").pop();
+    const fileName = s.poster.split("/").pop(); // "breaking-bad.jpg"
     return {
       ...s,
       poster: "img/series/" + fileName,
@@ -134,7 +143,7 @@ function normalizePosters() {
 
 
 /* ============================================================
-   SHOW CURRENT SERIES
+   ŞU ANKİ DİZİYİ EKRANA BAS + ÜLKEYE ZOOM
 ============================================================ */
 
 function showCurrentSeries() {
@@ -143,24 +152,31 @@ function showCurrentSeries() {
 
   const s = seriesData[currentIndex];
 
-  document.getElementById("series-title").textContent =
-    "Guess the filming city!";
+  // Metin / poster
+  document.getElementById("series-title").textContent = "Guess the filming city!";
   document.getElementById("series-subtitle").textContent =
     s.title + " – " + s.country;
 
   document.getElementById("series-poster").src = s.poster;
   document.getElementById("series-poster").alt = s.title;
 
+  // Ülkeye göre zoom seviyesi (city koordinatına odaklan)
   let zoomLevel = 5;
+
   if (s.country === "USA" || s.country === "Canada") zoomLevel = 4;
   if (s.country === "Turkey") zoomLevel = 6;
-  if (["France", "Spain", "Italy", "Germany", "UK", "Ireland"].includes(s.country)) {
+  if (
+    ["France", "Spain", "Italy", "Germany", "UK", "Ireland"].includes(
+      s.country
+    )
+  ) {
     zoomLevel = 6;
   }
   if (["Norway", "Sweden", "Finland", "Denmark"].includes(s.country)) {
     zoomLevel = 5;
   }
 
+  // Koordinat varsa haritayı şehrin kendisine yaklaştır
   if (s.coordinates && s.coordinates.length === 2) {
     const [lat, lon] = s.coordinates;
     if (!isNaN(lat) && !isNaN(lon)) {
@@ -173,7 +189,7 @@ function showCurrentSeries() {
 
 
 /* ============================================================
-   UI HELPERS
+   UI YARDIMCI FONKSİYONLARI
 ============================================================ */
 
 function updateTopBar() {
@@ -211,15 +227,43 @@ function setLastResult(text) {
   document.getElementById("last-result").textContent = text;
 }
 
+function showLoadingOverlay() {
+  if (loadingOverlay) {
+    loadingOverlay.classList.remove("hidden");
+  }
+}
+
 function hideLoadingOverlay() {
   if (loadingOverlay) {
     loadingOverlay.classList.add("hidden");
   }
 }
 
+// SFX helper'lar
+function playClick() {
+  if (sfxClick) {
+    sfxClick.currentTime = 0;
+    sfxClick.play().catch(() => {});
+  }
+}
+
+function playCorrect() {
+  if (sfxCorrect) {
+    sfxCorrect.currentTime = 0;
+    sfxCorrect.play().catch(() => {});
+  }
+}
+
+function playWrong() {
+  if (sfxWrong) {
+    sfxWrong.currentTime = 0;
+    sfxWrong.play().catch(() => {});
+  }
+}
+
 
 /* ============================================================
-   HAVERSINE DISTANCE
+   MESAFE HESABI (Haversine)
 ============================================================ */
 
 function getDistance(lat1, lon1, lat2, lon2) {
@@ -227,7 +271,7 @@ function getDistance(lat1, lon1, lat2, lon2) {
     return (v * Math.PI) / 180;
   }
 
-  const R = 6371;
+  const R = 6371; // km
   const dLat = toRad(lat2 - lat1);
   const dLon = toRad(lon2 - lon1);
 
@@ -244,27 +288,28 @@ function getDistance(lat1, lon1, lat2, lon2) {
 
 
 /* ============================================================
-   SCORE LABELS
+   MESAFEYE GÖRE PUAN / LABEL
 ============================================================ */
 
 function getScoreForDistance(distKm) {
-  // close guesses → points, far guesses → lose life, no points
+  // Yakınlığa göre label + puan
   if (distKm <= 50) {
-    return { label: "Perfect guess!", points: 150, isCorrect: true, loseLife: false };
+    return { label: "Perfect guess!", points: 150, isCorrect: true };
   } else if (distKm <= 150) {
-    return { label: "Very close!", points: 120, isCorrect: true, loseLife: false };
+    return { label: "Very close!", points: 120, isCorrect: true };
   } else if (distKm <= 400) {
-    return { label: "Close guess!", points: 80, isCorrect: true, loseLife: false };
+    return { label: "Close guess!", points: 80, isCorrect: true };
   } else if (distKm <= 1500) {
-    return { label: "Far, but not too bad.", points: 0, isCorrect: false, loseLife: true };
+    // Burada CAN GİDECEK ve PUAN YOK
+    return { label: "Far, but not too bad.", points: 0, isCorrect: false };
   } else {
-    return { label: "Way too far.", points: 0, isCorrect: false, loseLife: true };
+    return { label: "Way too far.", points: 0, isCorrect: false };
   }
 }
 
 
 /* ============================================================
-   SUBMIT GUESS
+   TAHMİN GÖNDER (SUBMIT GUESS)
 ============================================================ */
 
 function submitGuess() {
@@ -311,18 +356,22 @@ function submitGuess() {
 
 
 /* ============================================================
-   CORRECT / WRONG / SKIP / NEXT
+   DOĞRU / YANLIŞ / SKIP / NEXT
 ============================================================ */
 
 function handleCorrectGuess(dist, scoreInfo) {
+  playCorrect();
+
   correctAnswers++;
   streak++;
   score += scoreInfo.points;
 
+  // Streak bonus
   if (streak > 0 && streak % streakThreshold === 0) {
     score += 50;
   }
 
+  // best score güncelle
   if (score > bestScore) {
     bestScore = score;
     localStorage.setItem("bestScore", bestScore);
@@ -339,21 +388,26 @@ function handleWrongGuess(dist, scoreInfo) {
   const s = seriesData[currentIndex];
 
   if (scoreInfo.points > 0) {
-    // şu an hiç kullanılmıyor ama dursun
+    // Şu an bu case yok ama güvenlik için bıraktık
     score += scoreInfo.points;
-  }
-
-  if (scoreInfo.loseLife) {
+    setLastResult(
+      `🟠 ${scoreInfo.label} Correct city: ${s.city}. You were ~${Math.round(
+        dist
+      )} km away. (+${scoreInfo.points} pts)`
+    );
+  } else {
+    // Can gider + yanlış sesi
+    playWrong();
     lives--;
     streak = 0;
+    setLastResult(
+      `❌ ${scoreInfo.label} Correct city: ${s.city}. You were ~${Math.round(
+        dist
+      )} km away.`
+    );
   }
 
-  setLastResult(
-    `❌ ${scoreInfo.label} Correct city: ${s.city}. You were ~${Math.round(
-      dist
-    )} km away.`
-  );
-
+  // best score güncelle
   if (score > bestScore) {
     bestScore = score;
     localStorage.setItem("bestScore", bestScore);
@@ -413,6 +467,7 @@ function endGame(message = "Game Over") {
   document.getElementById("btn-next").disabled = true;
   document.getElementById("btn-skip").disabled = true;
 
+  // Modal varsa göster
   if (gameOverModal) {
     gameOverMessageEl.textContent = message;
     gameOverScoreValueEl.textContent = score;
@@ -423,68 +478,97 @@ function endGame(message = "Game Over") {
 
 
 /* ============================================================
-   START / RESET GAME
+   START GAME / NEW GAME
 ============================================================ */
 
-function resetGameState() {
+function startGame() {
+  if (hasGameStarted) return;
+  hasGameStarted = true;
+
+  const introOverlay = document.getElementById("intro-overlay");
+  if (introOverlay) {
+    introOverlay.classList.add("hidden");
+  }
+
+  // Fade-in sınıfları
+  const layout = document.querySelector(".layout");
+  const seriesCard = document.querySelector(".series-card");
+  if (layout) layout.classList.add("fade-in");
+  if (seriesCard) seriesCard.classList.add("fade-in");
+
+  gameStartedAt = Date.now();
   timeLeft = 60;
   score = 0;
   lives = 5;
   correctAnswers = 0;
   streak = 0;
   questionsAnswered = 0;
-  currentIndex = 0;
-  lastGuess = null;
   gameOver = false;
+
+  updateTopBar();
+  updateStatsPanel();
+  setLastResult("Click on the map to make your first guess!");
+
+  initMap();
+  showLoadingOverlay();
+  loadSeries();
+  startTimer();
+
+  // BG müzik
+  if (bgAudio) {
+    bgAudio.loop = true;
+    bgAudio.play().catch(() => {});
+  }
+}
+
+function newGame() {
+  // intro tekrar gösterilmesin
+  gameOver = false;
+  currentIndex = 0;
+  score = 0;
+  lives = 5;
+  correctAnswers = 0;
+  streak = 0;
+  questionsAnswered = 0;
+  timeLeft = 60;
+  gameStartedAt = Date.now();
 
   if (userMarker) {
     map.removeLayer(userMarker);
     userMarker = null;
   }
 
-  setLastResult("Click on the map to guess!");
-  updateStatsPanel();
+  if (seriesData.length) {
+    seriesData.sort(() => Math.random() - 0.5);
+    currentIndex = 0;
+    showCurrentSeries();
+  }
+
   updateTopBar();
+  updateStatsPanel();
+  setLastResult("New game started. Make your best guesses!");
 
   document.getElementById("btn-submit").disabled = false;
   document.getElementById("btn-next").disabled = false;
   document.getElementById("btn-skip").disabled = false;
-}
 
-function startGame() {
-  // introyu sadece ilk seferde gösteriyoruz
-  if (introOverlay && !introOverlay.classList.contains("hidden")) {
-    introOverlay.classList.add("hidden");
+  if (gameOverModal) {
+    gameOverModal.classList.add("hidden");
   }
 
-  resetGameState();
-
-  gameStartedAt = Date.now();
-  clearInterval(timerInterval);
   startTimer();
-
-  if (!map) {
-    initMap();
-  }
-
-  if (loadingOverlay) {
-    loadingOverlay.classList.remove("hidden");
-  }
-
-  loadSeries();
 }
 
 
 /* ============================================================
-   INIT (only once, page load)
+   INIT APP
 ============================================================ */
 
-function init() {
-  console.log("App init...");
+function initApp() {
+  console.log("App initializing...");
 
+  // DOM referansları
   loadingOverlay = document.getElementById("loading-overlay");
-  introOverlay = document.getElementById("intro-overlay");
-  startGameBtn = document.getElementById("btn-start-game");
 
   gameOverModal = document.getElementById("gameOverModal");
   gameOverMessageEl = document.getElementById("gameOverMessage");
@@ -493,58 +577,88 @@ function init() {
   newGameBtn = document.getElementById("newGameBtn");
 
   bgAudio = document.getElementById("bg-audio");
-  muteBtn = document.getElementById("mute-btn");
+  sfxCorrect = document.getElementById("sfx-correct");
+  sfxWrong = document.getElementById("sfx-wrong");
+  sfxClick = document.getElementById("sfx-click");
 
-  // Background audio: start only after first interaction
-  if (bgAudio) {
-    bgAudio.volume = 0.4;
+  const muteBtn = document.getElementById("mute-btn");
+  const startGameBtn = document.getElementById("start-game-btn");
 
-    const enableAudioOnInteraction = () => {
-      document.body.removeEventListener("click", enableAudioOnInteraction);
-      document.body.removeEventListener("keydown", enableAudioOnInteraction);
-      bgAudio.play().catch(() => {});
-    };
+  const submitBtn = document.getElementById("btn-submit");
+  const nextBtn = document.getElementById("btn-next");
+  const skipBtn = document.getElementById("btn-skip");
 
-    document.body.addEventListener("click", enableAudioOnInteraction);
-    document.body.addEventListener("keydown", enableAudioOnInteraction);
-  }
+  // Audio'ları preload et → gecikmeyi azalt
+  [bgAudio, sfxCorrect, sfxWrong, sfxClick].forEach((el) => {
+    if (el) {
+      el.load();
+    }
+  });
 
-  if (muteBtn && bgAudio) {
-    muteBtn.addEventListener("click", () => {
-      bgAudio.muted = !bgAudio.muted;
-      muteBtn.textContent = bgAudio.muted ? "🔇" : "🔊";
+  // Start butonu
+  if (startGameBtn) {
+    startGameBtn.addEventListener("click", () => {
+      playClick();
+      startGame();
     });
   }
 
-  // Buttons
-  document
-    .getElementById("btn-submit")
-    .addEventListener("click", submitGuess);
-
-  document
-    .getElementById("btn-next")
-    .addEventListener("click", nextQuestion);
-
-  document
-    .getElementById("btn-skip")
-    .addEventListener("click", skipQuestion);
-
-  if (startGameBtn) {
-    startGameBtn.addEventListener("click", startGame);
-  }
-
+  // New Game (intro yok, direkt restart)
   if (newGameBtn) {
     newGameBtn.addEventListener("click", () => {
-      if (gameOverModal) {
-        gameOverModal.classList.add("hidden");
-      }
-      startGame(); // intro tekrar gelmiyor
+      playClick();
+      newGame();
     });
   }
 
-  // Intro overlay zaten açık geliyor; map & timer henüz başlamıyor.
-  updateStatsPanel();
+  // Mute tuşu
+  if (muteBtn && bgAudio) {
+    muteBtn.addEventListener("click", () => {
+      if (bgAudio.muted) {
+        bgAudio.muted = false;
+        muteBtn.textContent = "🔊";
+      } else {
+        bgAudio.muted = true;
+        muteBtn.textContent = "🔇";
+      }
+    });
+  }
+
+  // Oyun butonları (click sfx ile)
+  if (submitBtn) {
+    submitBtn.addEventListener("click", () => {
+      playClick();
+      submitGuess();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      playClick();
+      nextQuestion();
+    });
+  }
+
+  if (skipBtn) {
+    skipBtn.addEventListener("click", () => {
+      playClick();
+      skipQuestion();
+    });
+  }
+
+  // Başlangıçta sadece intro açık, oyun başlamıyor
   updateTopBar();
+  updateStatsPanel();
 }
 
-window.addEventListener("DOMContentLoaded", init);
+window.addEventListener("DOMContentLoaded", initApp);
+bgAudio = document.getElementById("bg-audio");
+
+const enableAudio = () => {
+  if (bgAudio) {
+    bgAudio.volume = 0.35;
+    bgAudio.play().catch(()=>{});
+  }
+  document.body.removeEventListener("click", enableAudio);
+};
+document.body.addEventListener("click", enableAudio);

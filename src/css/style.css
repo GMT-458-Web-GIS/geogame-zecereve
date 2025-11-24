@@ -8,21 +8,21 @@
 }
 
 body {
-  background: #fde8f3;
-  color: #444;
+  background: #0b1020; /* dark mode */
+  color: #f5f5f5;
 }
 
 /* TOP BAR -------------------------------------------------------- */
 
 .top-bar {
   width: 100%;
-  background: #fff;
+  background: #141b2f;
   padding: 14px 28px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  border-bottom: 2px solid #f8c7e9;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  border-bottom: 2px solid #242f4f;
 }
 
 .top-bar-left {
@@ -32,22 +32,23 @@ body {
 }
 
 .logo {
-  height: 38px;
+  height: 40px;
 }
 
 .game-title {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
   color: #ff8acf;
 }
 
 .top-bar-center .pill {
-  background: #ffe0f3;
+  background: rgba(255, 136, 207, 0.15);
   padding: 8px 16px;
   border-radius: 20px;
   font-size: 14px;
   font-weight: 600;
-  color: #ff69b4;
+  color: #ff9fd6;
+  border: 1px solid rgba(255, 136, 207, 0.3);
 }
 
 .top-bar-right {
@@ -59,7 +60,7 @@ body {
 
 .timer {
   font-size: 16px;
-  color: #444;
+  color: #f5f5f5;
 }
 
 .lives {
@@ -67,22 +68,21 @@ body {
   color: #ff77c2;
 }
 
+/* ICON BUTTON (MUTE) --------------------------------------------- */
+
 .icon-btn {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: none;
+  background: transparent;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #f5f5f5;
+  padding: 6px 10px;
   cursor: pointer;
   font-size: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #ffe0f3;
   transition: 0.2s;
 }
 
 .icon-btn:hover {
-  background: #ffc1e5;
+  background: rgba(255,255,255,0.08);
 }
 
 /* LAYOUT ---------------------------------------------------------- */
@@ -91,24 +91,31 @@ body {
   display: flex;
   padding: 20px 24px;
   gap: 18px;
+  opacity: 0;
+}
+
+/* Fade-in animasyonu */
+
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out forwards;
 }
 
 /* LEFT SIDE — MAP ------------------------------------------------- */
 
 .map-wrapper {
   flex: 3.5;
-  background: #fff;
+  background: #161d33;
   border-radius: 14px;
   padding: 10px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
 }
 
 .map-header {
   padding: 10px;
   font-weight: 500;
-  color: #555;
+  color: #e1e4ff;
 }
 
 #map {
@@ -122,10 +129,10 @@ body {
 
 .stats-panel {
   flex: 1.3;
-  background: #fff;
+  background: #161d33;
   border-radius: 14px;
   padding: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
 }
 
 .stats-panel h2 {
@@ -140,22 +147,26 @@ body {
   justify-content: space-between;
   margin: 8px 0;
   font-size: 15px;
-  color: #444;
+  color: #f5f5f5;
+}
+
+.stat-icon {
+  margin-right: 6px;
 }
 
 .stats-panel hr {
   border: none;
-  border-top: 1px solid #f2d2e7;
+  border-top: 1px solid #28314f;
   margin: 12px 0;
 }
 
 .last-result {
   margin-top: 14px;
   padding: 10px;
-  background: #ffe0f3;
+  background: rgba(255, 136, 207, 0.15);
   border-radius: 10px;
   font-weight: 600;
-  color: #ff4fa5;
+  color: #ffb3e0;
   text-align: center;
 }
 
@@ -164,11 +175,12 @@ body {
 .series-card {
   margin: 0 24px 24px;
   display: flex;
-  background: #fff;
+  background: #161d33;
   border-radius: 16px;
   padding: 16px;
   gap: 18px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  opacity: 0;
 }
 
 .series-poster-wrapper {
@@ -176,7 +188,7 @@ body {
   height: 220px;
   border-radius: 14px;
   overflow: hidden;
-  background: #ddd;
+  background: #222;
 }
 
 .series-poster-wrapper img {
@@ -193,13 +205,13 @@ body {
 
 .series-text h3 {
   font-size: 22px;
-  color: #ff69b4;
+  color: #ff8acf;
   font-weight: 700;
 }
 
 .series-text p {
   font-size: 15px;
-  color: #777;
+  color: #d0d3ff;
 }
 
 .series-buttons {
@@ -220,43 +232,45 @@ body {
 }
 
 .btn.primary {
-  background: #ff8acf;
+  background: linear-gradient(135deg, #ff8acf, #ff4fa5);
   color: white;
+  box-shadow: 0 0 10px rgba(255, 79, 165, 0.6);
 }
 
 .btn.primary:hover {
-  background: #ff79c5;
+  filter: brightness(1.06);
 }
 
 .btn.secondary {
-  background: #ffd6ec;
-  color: #c64285;
+  background: rgba(255, 214, 236, 0.2);
+  color: #ff8acf;
+  border: 1px solid rgba(255, 214, 236, 0.6);
 }
 
 .btn.secondary:hover {
-  background: #fbc3e2;
+  background: rgba(255, 214, 236, 0.35);
 }
 
 .btn.ghost {
-  background: white;
+  background: transparent;
   color: #ff8acf;
   border: 2px solid #ffb4dd;
 }
 
 .btn.ghost:hover {
-  background: #ffe7f5;
+  background: rgba(255, 183, 221, 0.08);
 }
 
-/* GAME OVER MODAL ------------------------------------------------ */
+/* GAME OVER MODAL ------------------------------------------------- */
 
 .game-over-modal {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
+  z-index: 3000;
 }
 
 .game-over-modal.hidden {
@@ -268,7 +282,7 @@ body {
   padding: 32px 48px;
   border-radius: 16px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .game-over-content h1 {
@@ -280,6 +294,7 @@ body {
 .game-over-content p {
   margin-bottom: 8px;
   font-weight: 600;
+  color: #333;
 }
 
 .game-over-content button {
@@ -293,131 +308,122 @@ body {
   color: #fff;
 }
 
-/* INTRO OVERLAY -------------------------------------------------- */
+/* INTRO OVERLAY --------------------------------------------------- */
 
 .intro-overlay {
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at top, #ff8acf33 0, transparent 55%), #050315;
+  background: radial-gradient(circle at top, #1c2340 0, #050713 55%, #000 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 11000;
-  color: #fef3ff;
+  z-index: 4000;
+  animation: fadeInOverlay 0.6s ease-out;
 }
 
 .intro-overlay.hidden {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s ease-out;
+  display: none;
 }
 
 .intro-content {
-  max-width: 720px;
-  padding: 36px 40px 32px;
-  border-radius: 24px;
-  background: radial-gradient(circle at top, #ff8acf22 0, #0b071f 55%);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
   text-align: center;
-  border: 1px solid rgba(255, 138, 207, 0.5);
-}
-
-.intro-logo-wrap {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 14px;
+  padding: 32px 40px;
+  border-radius: 20px;
+  background: rgba(10, 14, 30, 0.9);
+  box-shadow: 0 0 40px rgba(255, 136, 207, 0.4);
+  border: 1px solid rgba(255, 136, 207, 0.5);
+  max-width: 520px;
 }
 
 .intro-logo {
-  width: 180px;
+  width: 140px;
   height: auto;
-  filter: drop-shadow(0 0 15px rgba(255, 138, 207, 0.8));
+  margin-bottom: 16px;
+  filter: drop-shadow(0 0 12px rgba(255, 136, 207, 0.8));
 }
 
 .intro-title {
   font-size: 32px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-  color: #ffb2e5;
-  text-shadow: 0 0 12px rgba(255, 138, 207, 0.9);
+  color: #ff8acf;
+  margin-bottom: 6px;
+  text-shadow: 0 0 20px rgba(255, 136, 207, 0.9);
 }
 
 .intro-tagline {
   font-size: 15px;
-  color: #f9e7ff;
-  margin-bottom: 18px;
+  color: #d0d3ff;
+  margin-bottom: 16px;
 }
 
 .intro-rules {
+  list-style: none;
   text-align: left;
-  margin: 0 auto 20px;
-  max-width: 560px;
-}
-
-.intro-rules h2 {
-  font-size: 18px;
-  margin-bottom: 8px;
-  color: #ffe0f7;
-}
-
-.intro-rules ul {
-  list-style: disc;
-  margin-left: 18px;
+  margin-bottom: 18px;
+  color: #e1e4ff;
   font-size: 14px;
-  line-height: 1.5;
-  color: #e7d6ff;
+}
+
+.intro-rules li {
+  margin-bottom: 6px;
 }
 
 .intro-start-btn {
-  background: linear-gradient(135deg, #ff77c2, #ffb4dd);
-  color: #2a042d;
-  padding: 12px 32px;
-  border-radius: 30px;
-  font-size: 16px;
-  box-shadow: 0 0 18px rgba(255, 138, 207, 0.9);
+  width: 100%;
 }
 
-.intro-start-btn:hover {
-  transform: translateY(-1px) scale(1.01);
-  box-shadow: 0 0 24px rgba(255, 138, 207, 1);
-}
-
-/* LOADING OVERLAY ----------------------------------------------- */
+/* LOADING OVERLAY + SPINNER -------------------------------------- */
 
 .loading-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(5, 0, 20, 0.82);
+  background: rgba(0, 0, 0, 0.55);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 10500;
-  color: #ffe6ff;
+  z-index: 2000;
+  color: #fff;
+  font-weight: 500;
 }
 
 .loading-overlay.hidden {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease-out;
+  display: none;
 }
 
-.loading-inner {
-  text-align: center;
-}
-
-.loading-spinner {
-  width: 40px;
-  height: 40px;
+.spinner {
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  border: 4px solid rgba(255, 255, 255, 0.2);
+  border: 4px solid rgba(255,255,255,0.2);
   border-top-color: #ff8acf;
-  margin: 0 auto 12px;
-  animation: spin 0.9s linear infinite;
+  animation: spin 0.7s linear infinite;
+  margin-bottom: 12px;
 }
+
+/* ANIMATIONS ------------------------------------------------------ */
 
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInOverlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

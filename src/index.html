@@ -24,43 +24,44 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <!-- ===== INTRO OVERLAY (only before first game) ===== -->
+  <!-- INTRO OVERLAY (full-screen, before game starts) -->
   <div id="intro-overlay" class="intro-overlay">
     <div class="intro-content">
-      <div class="intro-logo-wrap">
-        <img src="img/logo.png" alt="Series City Hunt Logo" class="intro-logo" />
-      </div>
+      <img src="img/logo.png" alt="Series City Hunt" class="intro-logo" />
       <h1 class="intro-title">Series City Hunt</h1>
-      <p class="intro-tagline">
-        Guess the filming city of popular TV series within 60 seconds and try to beat your best score!
-      </p>
+      <p class="intro-tagline">Can you guess the filming city?</p>
 
-      <div class="intro-rules">
-        <h2>How to Play</h2>
-        <ul>
-          <li>You have <strong>60 seconds</strong> and <strong>5 hearts</strong>.</li>
-          <li>For each series, click on the map to place your city guess.</li>
-          <li>The closer you are, the more points you earn.</li>
-          <li><strong>"Far, but not too bad"</strong> and <strong>"Way too far"</strong> cost you a heart.</li>
-          <li>Try to achieve the highest <strong>Best Score</strong> before the time runs out.</li>
-        </ul>
-      </div>
+      <ul class="intro-rules">
+        <li>⏱ You have 60 seconds, solve as many series as possible before time runs out..</li>
+        <li>🗺 The series' country is zoomed in automatically, guess the city from the map.</li>
+        <li>✅ The closer you are, the more points you get.</li>
+        <li>❤️ You lose lives if you guess wrong. If you run out of lives, the game is over.</li>
+        <li>⭐ The highest score is stored as the "Best Score".</li>
+      </ul>
 
-      <button id="btn-start-game" class="btn intro-start-btn">
+      <button id="start-game-btn" class="btn primary intro-start-btn">
         Start Game
       </button>
     </div>
   </div>
 
-  <!-- ===== LOADING OVERLAY ===== -->
+  <!-- LOADING OVERLAY -->
   <div id="loading-overlay" class="loading-overlay hidden">
-    <div class="loading-inner">
-      <div class="loading-spinner"></div>
-      <p>Loading map &amp; series...</p>
+    <div class="spinner"></div>
+    <p>Loading series…</p>
+  </div>
+
+  <!-- GAME OVER MODAL -->
+  <div id="gameOverModal" class="game-over-modal hidden">
+    <div class="game-over-content">
+      <h1 id="gameOverMessage">Game Over</h1>
+      <p>Your score: <span id="gameOverScoreValue">0</span></p>
+      <p>Best score: <span id="gameOverBestScoreValue">0</span></p>
+      <button id="newGameBtn">New Game</button>
     </div>
   </div>
 
-  <!-- ===== TOP BAR ===== -->
+  <!-- TOP BAR -->
   <header class="top-bar">
     <div class="top-bar-left">
       <img src="img/logo.png" alt="Series City Hunt" class="logo" />
@@ -80,13 +81,11 @@
       <div class="lives" id="lives">
         ❤ ❤ ❤ ❤ ❤
       </div>
-      <button id="mute-btn" class="icon-btn" title="Mute / Unmute">
-        🔊
-      </button>
+      <button id="mute-btn" class="icon-btn" title="Toggle music">🔊</button>
     </div>
   </header>
 
-  <!-- ===== MAIN LAYOUT ===== -->
+  <!-- MAIN LAYOUT -->
   <main class="layout">
     <!-- LEFT: MAP AREA -->
     <section class="map-wrapper">
@@ -101,30 +100,30 @@
       <h2>GAME STATS</h2>
 
       <div class="stat-row">
-        <span>Current Score</span>
+        <span><span class="stat-icon">🏆</span>Current Score</span>
         <span id="current-score">0</span>
       </div>
       <div class="stat-row">
-        <span>Best Score</span>
+        <span><span class="stat-icon">🌟</span>Best Score</span>
         <span id="best-score">0</span>
       </div>
       <div class="stat-row">
-        <span>Accuracy</span>
+        <span><span class="stat-icon">🎯</span>Accuracy</span>
         <span id="accuracy">0%</span>
       </div>
 
       <hr />
 
       <div class="stat-row">
-        <span>Correct Answers</span>
+        <span><span class="stat-icon">✅</span>Correct Answers</span>
         <span id="correct-answers">0</span>
       </div>
       <div class="stat-row">
-        <span>Current Streak</span>
+        <span><span class="stat-icon">🔥</span>Current Streak</span>
         <span id="current-streak">0</span>
       </div>
       <div class="stat-row">
-        <span>Avg Time</span>
+        <span><span class="stat-icon">⏳</span>Avg Time</span>
         <span id="avg-time">0 s</span>
       </div>
 
@@ -134,10 +133,10 @@
     </aside>
   </main>
 
-  <!-- ===== BOTTOM: SERIES CARD ===== -->
+  <!-- BOTTOM: SERIES CARD -->
   <section class="series-card">
     <div class="series-poster-wrapper">
-      <!-- Poster files: img/series/... -->
+      <!-- Poster dosyaların: img/series/... -->
       <img
         id="series-poster"
         src="img/series/how-i-met-your-mother.jpg"
@@ -159,19 +158,12 @@
     </div>
   </section>
 
-  <!-- ===== GAME OVER MODAL ===== -->
-  <div id="gameOverModal" class="game-over-modal hidden">
-    <div class="game-over-content">
-      <h1>Game Over</h1>
-      <p id="gameOverMessage">Time is over!</p>
-      <p>Your score: <span id="gameOverScoreValue">0</span></p>
-      <p>Best score: <span id="gameOverBestScoreValue">0</span></p>
-      <button id="newGameBtn">New Game</button>
-    </div>
-  </div>
+  <!-- AUDIO -->
+  <audio id="bg-audio" src="src/audio/bg-music.mp3" preload="auto" loop></audio>
+  <audio id="sfx-correct" src="audio/correct.mp3" preload="auto"></audio>
+  <audio id="sfx-wrong"   src="audio/wrong.mp3"   preload="auto"></audio>
+  <audio id="sfx-click"   src="audio/click.mp3"   preload="auto"></audio>
 
-  <!-- ===== BACKGROUND AUDIO ===== -->
-  <audio id="bg-audio" src="audio/bg-music.mp3" loop></audio>
 
   <!-- Leaflet JS -->
   <script
