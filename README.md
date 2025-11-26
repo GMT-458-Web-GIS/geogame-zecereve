@@ -1,19 +1,19 @@
-# 🎯 Series City Hunt
+#  Series City Hunt
 
 Series City Hunt is a fast-paced, map-based quiz game where you guess the **filming city** of popular TV series by clicking on an interactive world map (Leaflet). You race against a countdown timer, manage your lives, and try to beat your **Best Score** in one intense round.
 
 ---
 
-## 🔗 Live Demo 
+##  Live Demo 
 
 - **Play the game:**  
-  👉 https://gmt-458-web-gis.github.io/geogame-zecereve/  
+  👉 https://zecereve.github.io/series-city-hunt/ 
 
 
 
 ---
 
-## 🕹️ Game Overview
+##  Game Overview
 
 **Core idea**
 
@@ -33,7 +33,7 @@ Series City Hunt is a fast-paced, map-based quiz game where you guess the **film
 
 ---
 
-## 🧩 How to Play
+##  How to Play
 
 1. **Open the game** in your browser or via GitHub Pages.
 2. You first see an **Intro Screen**:
@@ -59,15 +59,15 @@ Series City Hunt is a fast-paced, map-based quiz game where you guess the **film
 
 ---
 
-## 📊 Scoring & Lives
+##  Scoring & Lives
 
 | Distance to Target      | Feedback Text            | Points | Life Lost? |
 |-------------------------|--------------------------|--------|-----------|
 | `0 – 50 km`             | **Perfect guess!**       | 150    | No        |
 | `51 – 150 km`           | **Very close!**          | 120    | No        |
 | `151 – 400 km`          | **Close guess!**         | 80     | No        |
-| `401 – 1500 km`         | **Far, but not too bad.**| 0      | ✅ Yes     |
-| `> 1500 km`             | **Way too far.**         | 0      | ✅ Yes     |
+| `401 – 1500 km`         | **Far, but not too bad.**| 0      | Yes       |
+| `> 1500 km`             | **Way too far.**         | 0      | Yes       |
 
 Additional rules:
 
@@ -76,7 +76,7 @@ Additional rules:
 
 ---
 
-## 🧠 Game Flow
+## Game Flow
 
 The overall flow of the game is:
 
@@ -98,7 +98,7 @@ The overall flow of the game is:
 
 ---
 
-## 🖼️ UI Screens
+## UI Screens
 
 ### Intro Screen
 
@@ -137,7 +137,7 @@ Early Canva design used during the planning phase.
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer       | Technology                    |
 |------------|--------------------------------|
@@ -150,7 +150,7 @@ Early Canva design used during the planning phase.
 
 ---
 
-## 📁 Project Structure (simplified)
+## Project Structure (simplified)
 
 ![geogame-zecereve/
 │ README.md
@@ -181,7 +181,7 @@ Early Canva design used during the planning phase.
     │   └─ series/
     │       ├─ *.jpg (100 poster)
     ├─ js/
-    │   ├─ main.js (tek dosya oldu artık)
+    │   ├─ main.js 
     │   
     └─ index.html
 
