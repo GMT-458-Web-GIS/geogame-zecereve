@@ -48,8 +48,7 @@ let sfxClick;
 ============================================================ */
 
 function initMap() {
-  // Aynı map'i ikinci kez kurmaya çalışma
-  if (map) return;
+  if (map) return; // aynı div'e ikinci kez map kurma
 
   map = L.map("map").setView([20, 0], 2);
 
@@ -76,7 +75,7 @@ function placeMarker(latlng) {
 ============================================================ */
 
 function startTimer() {
-  // Eski interval varsa temizle
+  // Önce varsa eski intervali temizle
   if (timerInterval) clearInterval(timerInterval);
 
   timerInterval = setInterval(() => {
@@ -110,7 +109,7 @@ async function loadSeries() {
 
     normalizePosters();
 
-    // Dizileri karıştır
+    // Dizileri karıştıralım ki oyun her seferinde farklı olsun
     seriesData.sort(() => Math.random() - 0.5);
 
     currentIndex = 0;
@@ -136,7 +135,7 @@ function normalizePosters() {
     const fileName = s.poster.split("/").pop(); // "breaking-bad.jpg"
     return {
       ...s,
-      poster: "img/series/" + fileName,
+      poster: "img/series/" + fileName, // index.html'den bakınca doğru yol
     };
   });
 }
@@ -160,16 +159,12 @@ function showCurrentSeries() {
   document.getElementById("series-poster").src = s.poster;
   document.getElementById("series-poster").alt = s.title;
 
-  // Ülkeye göre zoom seviyesi (city koordinatına odaklan)
+  // Ülkeye göre zoom seviyesi (sadece city koordinatına odaklan)
   let zoomLevel = 5;
 
   if (s.country === "USA" || s.country === "Canada") zoomLevel = 4;
   if (s.country === "Turkey") zoomLevel = 6;
-  if (
-    ["France", "Spain", "Italy", "Germany", "UK", "Ireland"].includes(
-      s.country
-    )
-  ) {
+  if (["France", "Spain", "Italy", "Germany", "UK", "Ireland"].includes(s.country)) {
     zoomLevel = 6;
   }
   if (["Norway", "Sweden", "Finland", "Denmark"].includes(s.country)) {
@@ -239,7 +234,6 @@ function hideLoadingOverlay() {
   }
 }
 
-// SFX helper'lar
 function playClick() {
   if (sfxClick) {
     sfxClick.currentTime = 0;
@@ -388,7 +382,7 @@ function handleWrongGuess(dist, scoreInfo) {
   const s = seriesData[currentIndex];
 
   if (scoreInfo.points > 0) {
-    // Şu an bu case yok ama güvenlik için bıraktık
+    // Bu case artık yok ama güvenlik için bırakalım
     score += scoreInfo.points;
     setLastResult(
       `🟠 ${scoreInfo.label} Correct city: ${s.city}. You were ~${Math.round(
@@ -514,15 +508,13 @@ function startGame() {
   loadSeries();
   startTimer();
 
-  // BG müzik
   if (bgAudio) {
-    bgAudio.loop = true;
     bgAudio.play().catch(() => {});
   }
 }
 
 function newGame() {
-  // intro tekrar gösterilmesin
+  // intro tekrar gösterilmesin, sadece modal kapanıp oyun resetlensin
   gameOver = false;
   currentIndex = 0;
   score = 0;
@@ -588,13 +580,6 @@ function initApp() {
   const nextBtn = document.getElementById("btn-next");
   const skipBtn = document.getElementById("btn-skip");
 
-  // Audio'ları preload et → gecikmeyi azalt
-  [bgAudio, sfxCorrect, sfxWrong, sfxClick].forEach((el) => {
-    if (el) {
-      el.load();
-    }
-  });
-
   // Start butonu
   if (startGameBtn) {
     startGameBtn.addEventListener("click", () => {
@@ -652,13 +637,3 @@ function initApp() {
 }
 
 window.addEventListener("DOMContentLoaded", initApp);
-bgAudio = document.getElementById("bg-audio");
-
-const enableAudio = () => {
-  if (bgAudio) {
-    bgAudio.volume = 0.35;
-    bgAudio.play().catch(()=>{});
-  }
-  document.body.removeEventListener("click", enableAudio);
-};
-document.body.addEventListener("click", enableAudio);
