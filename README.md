@@ -7,7 +7,7 @@ Series City Hunt is a fast-paced, map-based quiz game where you guess the **film
 ##  Live Demo 
 
 - **Play the game:**  
-  👉 https://zecereve.github.io/geogame-zecereve/ 
+  👉 https://gmt-458-web-gis.github.io/geogame-zecereve/
 
 
 
